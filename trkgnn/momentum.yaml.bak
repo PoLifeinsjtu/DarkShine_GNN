@@ -1,0 +1,60 @@
+data:
+  E0: 8000
+  batch_size: 64
+  chunk_size: 30 MB
+  collection: DigitizedRecTrk
+  first_threshold: 0.9
+  global_stop: 1000000
+  global_stop_graph_file: 1
+  graph_with_BField: true
+  input_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Tracker_GNN.root
+  input_graph_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/
+  min_graph_size: 0.5
+  n_workers: 0
+  read_from_graph: true
+  scale_factor_BField: 100.0
+  threshold: 0.55
+  tracking_boundary:
+    z_max: -7.5
+    z_min: -607.75
+  tracking_layers:
+  - 7.78
+  - 22.78
+  - 38.78
+  - 53.78
+  - 89.78
+  - 180.28
+  tree_name: dp
+edge_features: true
+loss_func: binary_cross_entropy_with_logits
+model:
+  edge_input_dim: 4
+  heads: 4
+  hidden_dim: 64
+  n_encoder_layers: 2
+  n_iterations: 3
+  name: MomNet
+  node_input_dim: 6
+num_track_predict: false
+optimizer:
+  learning_rate: 0.004
+  lr_decay_schedule:
+  - end_epoch: 8
+    factor: 0.1
+    start_epoch: 4
+  - end_epoch: 10
+    factor: 0.01
+    start_epoch: 8
+  - end_epoch: 12
+    factor: 0.001
+    start_epoch: 10
+  - end_epoch: 15
+    factor: 0.0001
+    start_epoch: 12
+  name: Adam
+  weight_decay: 1.0e-05
+output_dir: ./output.momentum.rec
+rndm: 1
+task: momentum
+training:
+  n_total_epochs: 15

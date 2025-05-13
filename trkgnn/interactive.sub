@@ -1,0 +1,11 @@
+Universe   = vanilla
+Executable = run.sh
+Log        = log/interactive.log
+Output     = log/interactive.out
+Error      = log/interactive.error
+request_CPUs = 1
+request_GPUs = 1
++SJTU_GPUModel = "V100_32G"
+
+should_transfer_files = NO
+Queue

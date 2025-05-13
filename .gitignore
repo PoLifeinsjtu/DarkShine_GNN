@@ -1,0 +1,7 @@
+# Ignore
+/trkgnn/apply.link.rec
+/trkgnn/apply.momentum.rec.0p999
+/trkgnn/Tracker_GNN
+/trkgnn/output.link.rec
+/trkgnn/output
+/trkgnn/output.momentum.rec

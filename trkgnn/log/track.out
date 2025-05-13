@@ -1,0 +1,199 @@
+CUDA is available.
+Number of available GPUs: 1, but only 1 is used.
+2025-04-27 00:11:56,751 - [Apply.Momentum: INFO] input_dir: ['/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/']
+2025-04-27 00:11:56,752 - [Apply.Momentum: INFO] model_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/output.momentum.rec/model.checkpoints/model_checkpoint_014.pth.tar
+2025-04-27 00:11:56,752 - [Apply.Momentum: INFO] output_dir: apply.momentum.rec.0p999
+=================================================================
+Layer (type:depth-idx)                   Param #
+=================================================================
+MomNet                                   --
+├─Sequential: 1-1                        --
+│    └─Linear: 2-1                       448
+│    └─ReLU: 2-2                         --
+│    └─Linear: 2-3                       4,160
+│    └─ReLU: 2-4                         --
+├─Sequential: 1-2                        --
+│    └─Linear: 2-5                       320
+│    └─ReLU: 2-6                         --
+│    └─Linear: 2-7                       4,160
+│    └─ReLU: 2-8                         --
+├─ModuleList: 1-3                        --
+│    └─TransformerConv: 2-9              --
+│    │    └─SumAggregation: 3-1          --
+│    │    └─Linear: 3-2                  4,160
+│    │    └─Linear: 3-3                  4,160
+│    │    └─Linear: 3-4                  4,160
+│    │    └─Linear: 3-5                  4,096
+│    │    └─Linear: 3-6                  4,160
+│    └─TransformerConv: 2-10             --
+│    │    └─SumAggregation: 3-7          --
+│    │    └─Linear: 3-8                  4,160
+│    │    └─Linear: 3-9                  4,160
+│    │    └─Linear: 3-10                 4,160
+│    │    └─Linear: 3-11                 4,096
+│    │    └─Linear: 3-12                 4,160
+│    └─TransformerConv: 2-11             --
+│    │    └─SumAggregation: 3-13         --
+│    │    └─Linear: 3-14                 4,160
+│    │    └─Linear: 3-15                 4,160
+│    │    └─Linear: 3-16                 4,160
+│    │    └─Linear: 3-17                 4,096
+│    │    └─Linear: 3-18                 4,160
+├─ModuleList: 1-4                        --
+│    └─Sequential: 2-12                  --
+│    │    └─Linear: 3-19                 8,256
+│    │    └─ReLU: 3-20                   --
+│    │    └─Linear: 3-21                 4,160
+│    │    └─ReLU: 3-22                   --
+│    └─Sequential: 2-13                  --
+│    │    └─Linear: 3-23                 8,256
+│    │    └─ReLU: 3-24                   --
+│    │    └─Linear: 3-25                 4,160
+│    │    └─ReLU: 3-26                   --
+│    └─Sequential: 2-14                  --
+│    │    └─Linear: 3-27                 8,256
+│    │    └─ReLU: 3-28                   --
+│    │    └─Linear: 3-29                 4,160
+│    │    └─ReLU: 3-30                   --
+├─ModuleList: 1-5                        --
+│    └─LayerNorm: 2-15                   128
+│    └─LayerNorm: 2-16                   128
+│    └─LayerNorm: 2-17                   128
+├─ModuleList: 1-6                        --
+│    └─LayerNorm: 2-18                   128
+│    └─LayerNorm: 2-19                   128
+│    └─LayerNorm: 2-20                   128
+├─Sequential: 1-7                        --
+│    └─Linear: 2-21                      8,256
+│    └─ReLU: 2-22                        --
+│    └─Linear: 2-23                      65
+├─TransformerConv: 1-8                   --
+│    └─SumAggregation: 2-24              --
+│    └─Linear: 2-25                      4,160
+│    └─Linear: 2-26                      4,160
+│    └─Linear: 2-27                      4,160
+│    └─Linear: 2-28                      4,096
+│    └─Linear: 2-29                      4,160
+├─Sequential: 1-9                        --
+│    └─Linear: 2-30                      8,256
+│    └─ReLU: 2-31                        --
+│    └─Linear: 2-32                      65
+=================================================================
+Total params: 146,690
+Trainable params: 146,690
+Non-trainable params: 0
+=================================================================
+2025-04-27 00:12:15,311 - [Apply.Momentum: INFO] Processing 1/1: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/
+2025-04-27 00:12:15,313 - [utility.DataLoader: INFO] Reading from graph files
+2025-04-27 00:12:17,500 - [Apply.Momentum: INFO] Processing 1th iteration with 21 batches.
+2025-04-27 00:13:29,583 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 1th iteration.
+2025-04-27 00:13:31,152 - [Apply.Momentum: INFO] Processing 2th iteration with 21 batches.
+2025-04-27 00:14:28,826 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 2th iteration.
+2025-04-27 00:14:30,197 - [Apply.Momentum: INFO] Processing 3th iteration with 21 batches.
+2025-04-27 00:15:23,035 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 3th iteration.
+2025-04-27 00:15:24,618 - [Apply.Momentum: INFO] Processing 4th iteration with 21 batches.
+2025-04-27 00:16:17,511 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 4th iteration.
+2025-04-27 00:16:19,081 - [Apply.Momentum: INFO] Processing 5th iteration with 21 batches.
+2025-04-27 00:17:28,300 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 5th iteration.
+2025-04-27 00:17:29,724 - [Apply.Momentum: INFO] Processing 6th iteration with 21 batches.
+2025-04-27 00:18:15,446 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 6th iteration.
+2025-04-27 00:18:15,969 - [Apply.Momentum: INFO] Processing 7th iteration with 10 batches.
+2025-04-27 00:18:42,865 - [Apply.Momentum: INFO] Number of graphs: 583 processed in 7th iteration.
+2025-04-27 00:18:43,668 - [Apply.Momentum: INFO] Processing 8th iteration with 10 batches.
+2025-04-27 00:19:23,360 - [Apply.Momentum: INFO] Number of graphs: 583 processed in 8th iteration.
+2025-04-27 00:19:24,924 - [Apply.Momentum: INFO] Processing 9th iteration with 21 batches.
+2025-04-27 00:20:29,519 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 9th iteration.
+2025-04-27 00:20:31,063 - [Apply.Momentum: INFO] Processing 10th iteration with 21 batches.
+2025-04-27 00:21:32,961 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 10th iteration.
+2025-04-27 00:21:34,043 - [Apply.Momentum: INFO] Processing 11th iteration with 21 batches.
+2025-04-27 00:22:10,595 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 11th iteration.
+2025-04-27 00:22:12,530 - [Apply.Momentum: INFO] Processing 12th iteration with 21 batches.
+2025-04-27 00:23:26,580 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 12th iteration.
+2025-04-27 00:23:28,030 - [Apply.Momentum: INFO] Processing 13th iteration with 21 batches.
+2025-04-27 00:24:08,522 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 13th iteration.
+2025-04-27 00:24:09,919 - [Apply.Momentum: INFO] Processing 14th iteration with 21 batches.
+2025-04-27 00:24:51,973 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 14th iteration.
+2025-04-27 00:24:53,737 - [Apply.Momentum: INFO] Processing 15th iteration with 21 batches.
+2025-04-27 00:25:58,136 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 15th iteration.
+2025-04-27 00:25:59,656 - [Apply.Momentum: INFO] Processing 16th iteration with 21 batches.
+2025-04-27 00:27:05,611 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 16th iteration.
+2025-04-27 00:27:07,079 - [Apply.Momentum: INFO] Processing 17th iteration with 21 batches.
+2025-04-27 00:27:55,754 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 17th iteration.
+2025-04-27 00:27:57,513 - [Apply.Momentum: INFO] Processing 18th iteration with 21 batches.
+2025-04-27 00:28:52,808 - [Apply.Momentum: INFO] Number of graphs: 1331 processed in 18th iteration.
+2025-04-27 00:28:54,472 - [Apply.Momentum: INFO] Processing 19th iteration with 21 batches.
+2025-04-27 00:29:51,241 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 19th iteration.
+2025-04-27 00:29:52,600 - [Apply.Momentum: INFO] Processing 20th iteration with 21 batches.
+2025-04-27 00:31:03,327 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 20th iteration.
+2025-04-27 00:31:05,265 - [Apply.Momentum: INFO] Processing 21th iteration with 21 batches.
+2025-04-27 00:31:54,425 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 21th iteration.
+2025-04-27 00:31:56,428 - [Apply.Momentum: INFO] Processing 22th iteration with 21 batches.
+2025-04-27 00:32:52,096 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 22th iteration.
+2025-04-27 00:32:53,785 - [Apply.Momentum: INFO] Processing 23th iteration with 21 batches.
+2025-04-27 00:33:31,680 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 23th iteration.
+2025-04-27 00:33:33,024 - [Apply.Momentum: INFO] Processing 24th iteration with 21 batches.
+2025-04-27 00:34:15,838 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 24th iteration.
+2025-04-27 00:34:17,140 - [Apply.Momentum: INFO] Processing 25th iteration with 21 batches.
+2025-04-27 00:35:13,170 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 25th iteration.
+2025-04-27 00:35:14,850 - [Apply.Momentum: INFO] Processing 26th iteration with 21 batches.
+2025-04-27 00:36:31,422 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 26th iteration.
+2025-04-27 00:36:33,766 - [Apply.Momentum: INFO] Processing 27th iteration with 21 batches.
+2025-04-27 00:37:51,952 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 27th iteration.
+2025-04-27 00:37:52,642 - [Apply.Momentum: INFO] Processing 28th iteration with 9 batches.
+2025-04-27 00:38:15,959 - [Apply.Momentum: INFO] Number of graphs: 557 processed in 28th iteration.
+2025-04-27 00:38:16,944 - [Apply.Momentum: INFO] Processing 29th iteration with 21 batches.
+2025-04-27 00:39:01,233 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 29th iteration.
+2025-04-27 00:39:02,813 - [Apply.Momentum: INFO] Processing 30th iteration with 21 batches.
+2025-04-27 00:39:53,735 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 30th iteration.
+2025-04-27 00:39:55,018 - [Apply.Momentum: INFO] Processing 31th iteration with 21 batches.
+2025-04-27 00:40:30,048 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 31th iteration.
+2025-04-27 00:40:31,400 - [Apply.Momentum: INFO] Processing 32th iteration with 21 batches.
+2025-04-27 00:41:17,061 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 32th iteration.
+2025-04-27 00:41:18,940 - [Apply.Momentum: INFO] Processing 33th iteration with 21 batches.
+2025-04-27 00:42:12,606 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 33th iteration.
+2025-04-27 00:42:13,906 - [Apply.Momentum: INFO] Processing 34th iteration with 21 batches.
+2025-04-27 00:42:51,364 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 34th iteration.
+2025-04-27 00:42:52,572 - [Apply.Momentum: INFO] Processing 35th iteration with 21 batches.
+2025-04-27 00:43:34,586 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 35th iteration.
+2025-04-27 00:43:36,035 - [Apply.Momentum: INFO] Processing 36th iteration with 21 batches.
+2025-04-27 00:44:17,667 - [Apply.Momentum: INFO] Number of graphs: 1331 processed in 36th iteration.
+2025-04-27 00:44:19,362 - [Apply.Momentum: INFO] Processing 37th iteration with 21 batches.
+2025-04-27 00:45:15,213 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 37th iteration.
+2025-04-27 00:45:16,642 - [Apply.Momentum: INFO] Processing 38th iteration with 21 batches.
+2025-04-27 00:45:55,135 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 38th iteration.
+2025-04-27 00:45:56,800 - [Apply.Momentum: INFO] Processing 39th iteration with 21 batches.
+2025-04-27 00:46:47,561 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 39th iteration.
+2025-04-27 00:46:48,923 - [Apply.Momentum: INFO] Processing 40th iteration with 21 batches.
+2025-04-27 00:47:29,074 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 40th iteration.
+2025-04-27 00:47:30,520 - [Apply.Momentum: INFO] Processing 41th iteration with 21 batches.
+2025-04-27 00:48:06,738 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 41th iteration.
+2025-04-27 00:48:08,378 - [Apply.Momentum: INFO] Processing 42th iteration with 21 batches.
+2025-04-27 00:48:50,428 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 42th iteration.
+2025-04-27 00:48:51,992 - [Apply.Momentum: INFO] Processing 43th iteration with 21 batches.
+2025-04-27 00:49:35,644 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 43th iteration.
+2025-04-27 00:49:36,549 - [Apply.Momentum: INFO] Processing 44th iteration with 21 batches.
+2025-04-27 00:50:08,905 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 44th iteration.
+2025-04-27 00:50:10,734 - [Apply.Momentum: INFO] Processing 45th iteration with 21 batches.
+2025-04-27 00:51:14,242 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 45th iteration.
+2025-04-27 00:51:16,117 - [Apply.Momentum: INFO] Processing 46th iteration with 21 batches.
+2025-04-27 00:52:14,702 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 46th iteration.
+2025-04-27 00:52:16,289 - [Apply.Momentum: INFO] Processing 47th iteration with 21 batches.
+2025-04-27 00:53:02,651 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 47th iteration.
+2025-04-27 00:53:02,651 - [utility.DataLoader: INFO] All chunks are loaded
+Finish
+2025-04-27 00:53:02,651 - [Apply.Momentum: INFO] Finish predicting file: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/
+get_data_loaders took a total of 0.0000 seconds. [counts:    1]
+load_graph took a total of 0.0000 seconds. [counts:    1]
+GNNTrackData.__init__ took a total of 0.0016 seconds. [counts:   47]
+MomNet.forward took a total of 15.2627 seconds. [counts:  953]
+cluster.<locals>.classify_layers took a total of 3.2887 seconds. [counts: 60329]
+cluster.<locals>.bfs_for_multiple_starts_with_layers took a total of 289.3010 seconds. [counts: 60329]
+cluster took a total of 967.3438 seconds. [counts: 60329]
+analyze_tracks took a total of 1232.2578 seconds. [counts: 60329]
+predict took a total of 2466.0038 seconds. [counts:    1]
+Loaded .lt data type: <class 'list'>
+Loaded .lt file 1332 events.
+Loaded .pt file: 1332 events.
+Average Efficiency over 1332 events: edge: 49.44%
+Average Efficiency over 1330 events: fitting track: 32.30%
+Average Efficiency over 1298 events: finding track: 74.84%
