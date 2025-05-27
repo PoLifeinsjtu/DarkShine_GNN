@@ -1,199 +1,424 @@
-CUDA is available.
-Number of available GPUs: 1, but only 1 is used.
-2025-04-27 00:11:56,751 - [Apply.Momentum: INFO] input_dir: ['/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/']
-2025-04-27 00:11:56,752 - [Apply.Momentum: INFO] model_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/output.momentum.rec/model.checkpoints/model_checkpoint_014.pth.tar
-2025-04-27 00:11:56,752 - [Apply.Momentum: INFO] output_dir: apply.momentum.rec.0p999
-=================================================================
-Layer (type:depth-idx)                   Param #
-=================================================================
-MomNet                                   --
-├─Sequential: 1-1                        --
-│    └─Linear: 2-1                       448
-│    └─ReLU: 2-2                         --
-│    └─Linear: 2-3                       4,160
-│    └─ReLU: 2-4                         --
-├─Sequential: 1-2                        --
-│    └─Linear: 2-5                       320
-│    └─ReLU: 2-6                         --
-│    └─Linear: 2-7                       4,160
-│    └─ReLU: 2-8                         --
-├─ModuleList: 1-3                        --
-│    └─TransformerConv: 2-9              --
-│    │    └─SumAggregation: 3-1          --
-│    │    └─Linear: 3-2                  4,160
-│    │    └─Linear: 3-3                  4,160
-│    │    └─Linear: 3-4                  4,160
-│    │    └─Linear: 3-5                  4,096
-│    │    └─Linear: 3-6                  4,160
-│    └─TransformerConv: 2-10             --
-│    │    └─SumAggregation: 3-7          --
-│    │    └─Linear: 3-8                  4,160
-│    │    └─Linear: 3-9                  4,160
-│    │    └─Linear: 3-10                 4,160
-│    │    └─Linear: 3-11                 4,096
-│    │    └─Linear: 3-12                 4,160
-│    └─TransformerConv: 2-11             --
-│    │    └─SumAggregation: 3-13         --
-│    │    └─Linear: 3-14                 4,160
-│    │    └─Linear: 3-15                 4,160
-│    │    └─Linear: 3-16                 4,160
-│    │    └─Linear: 3-17                 4,096
-│    │    └─Linear: 3-18                 4,160
-├─ModuleList: 1-4                        --
-│    └─Sequential: 2-12                  --
-│    │    └─Linear: 3-19                 8,256
-│    │    └─ReLU: 3-20                   --
-│    │    └─Linear: 3-21                 4,160
-│    │    └─ReLU: 3-22                   --
-│    └─Sequential: 2-13                  --
-│    │    └─Linear: 3-23                 8,256
-│    │    └─ReLU: 3-24                   --
-│    │    └─Linear: 3-25                 4,160
-│    │    └─ReLU: 3-26                   --
-│    └─Sequential: 2-14                  --
-│    │    └─Linear: 3-27                 8,256
-│    │    └─ReLU: 3-28                   --
-│    │    └─Linear: 3-29                 4,160
-│    │    └─ReLU: 3-30                   --
-├─ModuleList: 1-5                        --
-│    └─LayerNorm: 2-15                   128
-│    └─LayerNorm: 2-16                   128
-│    └─LayerNorm: 2-17                   128
-├─ModuleList: 1-6                        --
-│    └─LayerNorm: 2-18                   128
-│    └─LayerNorm: 2-19                   128
-│    └─LayerNorm: 2-20                   128
-├─Sequential: 1-7                        --
-│    └─Linear: 2-21                      8,256
-│    └─ReLU: 2-22                        --
-│    └─Linear: 2-23                      65
-├─TransformerConv: 1-8                   --
-│    └─SumAggregation: 2-24              --
-│    └─Linear: 2-25                      4,160
-│    └─Linear: 2-26                      4,160
-│    └─Linear: 2-27                      4,160
-│    └─Linear: 2-28                      4,096
-│    └─Linear: 2-29                      4,160
-├─Sequential: 1-9                        --
-│    └─Linear: 2-30                      8,256
-│    └─ReLU: 2-31                        --
-│    └─Linear: 2-32                      65
-=================================================================
-Total params: 146,690
-Trainable params: 146,690
+Processing Tracker_GNN/Tracker_GNN_500.root
+{'DigitizedRecTrk', 'DigitizedTagTrk'}
+[DigitizedRecTrk]:  Output to output/DigitizedRecTrk
+Loading 0 to 583...
+[DigitizedRecTrk]:  Saving 0th graph
+Loading 583 to 1166...
+[DigitizedRecTrk]:  Saving 1th graph
+Loading 1166 to 1749...
+[DigitizedRecTrk]:  Saving 2th graph
+Loading 1749 to 2332...
+[DigitizedRecTrk]:  Saving 3th graph
+Loading 2332 to 2915...
+[DigitizedRecTrk]:  Saving 4th graph
+Loading 2915 to 3498...
+[DigitizedRecTrk]:  Saving 5th graph
+Loading 3498 to 4081...
+[DigitizedRecTrk]:  Saving 6th graph
+Loading 4081 to 4664...
+[DigitizedRecTrk]:  Saving 7th graph
+Loading 4664 to 5247...
+[DigitizedRecTrk]:  Saving 8th graph
+Loading 5247 to 5830...
+[DigitizedRecTrk]:  Saving 9th graph
+Loading 5830 to 6413...
+[DigitizedRecTrk]:  Saving 10th graph
+Loading 6413 to 6996...
+[DigitizedRecTrk]:  Saving 11th graph
+Loading 6996 to 7579...
+[DigitizedRecTrk]:  Saving 12th graph
+Loading 7579 to 8162...
+[DigitizedRecTrk]:  Saving 13th graph
+Loading 8162 to 8745...
+[DigitizedRecTrk]:  Saving 14th graph
+Loading 8745 to 9328...
+[DigitizedRecTrk]:  Saving 15th graph
+Loading 9328 to 9911...
+[DigitizedRecTrk]:  Saving 16th graph
+Loading 9911 to 10494...
+[DigitizedRecTrk]:  Saving 17th graph
+Loading 10494 to 11077...
+[DigitizedRecTrk]:  Saving 18th graph
+Loading 11077 to 11660...
+[DigitizedRecTrk]:  Saving 19th graph
+Loading 11660 to 12243...
+[DigitizedRecTrk]:  Saving 20th graph
+Loading 12243 to 12826...
+[DigitizedRecTrk]:  Saving 21th graph
+Loading 12826 to 13409...
+[DigitizedRecTrk]:  Saving 22th graph
+Loading 13409 to 13992...
+[DigitizedRecTrk]:  Saving 23th graph
+Loading 13992 to 14575...
+[DigitizedRecTrk]:  Saving 24th graph
+Loading 14575 to 15158...
+[DigitizedRecTrk]:  Saving 25th graph
+Loading 15158 to 15741...
+[DigitizedRecTrk]:  Saving 26th graph
+Loading 15741 to 16324...
+[DigitizedRecTrk]:  Saving 27th graph
+Loading 16324 to 16907...
+[DigitizedRecTrk]:  Saving 28th graph
+Loading 16907 to 17490...
+[DigitizedRecTrk]:  Saving 29th graph
+Loading 17490 to 18073...
+[DigitizedRecTrk]:  Saving 30th graph
+Loading 18073 to 18656...
+[DigitizedRecTrk]:  Saving 31th graph
+Loading 18656 to 19239...
+[DigitizedRecTrk]:  Saving 32th graph
+Loading 19239 to 19822...
+[DigitizedRecTrk]:  Saving 33th graph
+Loading 19822 to 20405...
+[DigitizedRecTrk]:  Saving 34th graph
+Loading 20405 to 20988...
+[DigitizedRecTrk]:  Saving 35th graph
+Loading 20988 to 21571...
+[DigitizedRecTrk]:  Saving 36th graph
+Loading 21571 to 22154...
+[DigitizedRecTrk]:  Saving 37th graph
+Loading 22154 to 22737...
+[DigitizedRecTrk]:  Saving 38th graph
+Loading 22737 to 23320...
+[DigitizedRecTrk]:  Saving 39th graph
+Loading 23320 to 23903...
+[DigitizedRecTrk]:  Saving 40th graph
+Loading 23903 to 24486...
+[DigitizedRecTrk]:  Saving 41th graph
+Loading 24486 to 25069...
+[DigitizedRecTrk]:  Saving 42th graph
+Loading 25069 to 25652...
+[DigitizedRecTrk]:  Saving 43th graph
+Loading 25652 to 26235...
+[DigitizedRecTrk]:  Saving 44th graph
+Loading 26235 to 26818...
+[DigitizedRecTrk]:  Saving 45th graph
+Loading 26818 to 27401...
+[DigitizedRecTrk]:  Saving 46th graph
+Loading 27401 to 27984...
+[DigitizedRecTrk]:  Saving 47th graph
+Loading 27984 to 28567...
+[DigitizedRecTrk]:  Saving 48th graph
+Loading 28567 to 29150...
+[DigitizedRecTrk]:  Saving 49th graph
+Loading 29150 to 29733...
+[DigitizedRecTrk]:  Saving 50th graph
+Loading 29733 to 30316...
+[DigitizedRecTrk]:  Saving 51th graph
+Loading 30316 to 30899...
+[DigitizedRecTrk]:  Saving 52th graph
+Loading 30899 to 31482...
+[DigitizedRecTrk]:  Saving 53th graph
+Loading 31482 to 32065...
+[DigitizedRecTrk]:  Saving 54th graph
+Loading 32065 to 32648...
+[DigitizedRecTrk]:  Saving 55th graph
+Loading 32648 to 33231...
+[DigitizedRecTrk]:  Saving 56th graph
+Loading 33231 to 33814...
+[DigitizedRecTrk]:  Saving 57th graph
+Loading 33814 to 34397...
+[DigitizedRecTrk]:  Saving 58th graph
+Loading 34397 to 34980...
+[DigitizedRecTrk]:  Saving 59th graph
+Loading 34980 to 35563...
+[DigitizedRecTrk]:  Saving 60th graph
+Loading 35563 to 36146...
+[DigitizedRecTrk]:  Saving 61th graph
+Loading 36146 to 36729...
+[DigitizedRecTrk]:  Saving 62th graph
+Loading 36729 to 37312...
+[DigitizedRecTrk]:  Saving 63th graph
+Loading 37312 to 37895...
+[DigitizedRecTrk]:  Saving 64th graph
+Loading 37895 to 38478...
+[DigitizedRecTrk]:  Saving 65th graph
+Loading 38478 to 39061...
+[DigitizedRecTrk]:  Saving 66th graph
+Loading 39061 to 39644...
+[DigitizedRecTrk]:  Saving 67th graph
+Loading 39644 to 40227...
+[DigitizedRecTrk]:  Saving 68th graph
+Loading 40227 to 40810...
+[DigitizedRecTrk]:  Saving 69th graph
+Loading 40810 to 41393...
+[DigitizedRecTrk]:  Saving 70th graph
+Loading 41393 to 41976...
+[DigitizedRecTrk]:  Saving 71th graph
+Loading 41976 to 42559...
+[DigitizedRecTrk]:  Saving 72th graph
+Loading 42559 to 43142...
+[DigitizedRecTrk]:  Saving 73th graph
+Loading 43142 to 43725...
+[DigitizedRecTrk]:  Saving 74th graph
+Loading 43725 to 44308...
+[DigitizedRecTrk]:  Saving 75th graph
+Loading 44308 to 44891...
+[DigitizedRecTrk]:  Saving 76th graph
+Loading 44891 to 45474...
+[DigitizedRecTrk]:  Saving 77th graph
+Loading 45474 to 46057...
+[DigitizedRecTrk]:  Saving 78th graph
+Loading 46057 to 46640...
+[DigitizedRecTrk]:  Saving 79th graph
+Loading 46640 to 47223...
+[DigitizedRecTrk]:  Saving 80th graph
+Loading 47223 to 47806...
+[DigitizedRecTrk]:  Saving 81th graph
+Loading 47806 to 48389...
+[DigitizedRecTrk]:  Saving 82th graph
+Loading 48389 to 48972...
+[DigitizedRecTrk]:  Saving 83th graph
+Loading 48972 to 49555...
+[DigitizedRecTrk]:  Saving 84th graph
+Loading 49555 to 50138...
+[DigitizedRecTrk]:  Saving 85th graph
+Loading 50138 to 50721...
+[DigitizedRecTrk]:  Saving 86th graph
+Loading 50721 to 51304...
+[DigitizedRecTrk]:  Saving 87th graph
+Loading 51304 to 51887...
+[DigitizedRecTrk]:  Saving 88th graph
+Loading 51887 to 52470...
+[DigitizedRecTrk]:  Saving 89th graph
+Loading 52470 to 53053...
+[DigitizedRecTrk]:  Saving 90th graph
+Loading 53053 to 53636...
+[DigitizedRecTrk]:  Saving 91th graph
+Loading 53636 to 54219...
+[DigitizedRecTrk]:  Saving 92th graph
+Loading 54219 to 54802...
+[DigitizedRecTrk]:  Saving 93th graph
+Loading 54802 to 55385...
+[DigitizedRecTrk]:  Saving 94th graph
+Loading 55385 to 55968...
+[DigitizedRecTrk]:  Saving 95th graph
+Loading 55968 to 56551...
+[DigitizedRecTrk]:  Saving 96th graph
+Loading 56551 to 57134...
+[DigitizedRecTrk]:  Saving 97th graph
+Loading 57134 to 57717...
+[DigitizedRecTrk]:  Saving 98th graph
+Loading 57717 to 58300...
+[DigitizedRecTrk]:  Saving 99th graph
+Loading 58300 to 58883...
+[DigitizedRecTrk]:  Saving 100th graph
+Loading 58883 to 59466...
+[DigitizedRecTrk]:  Saving 101th graph
+Loading 59466 to 60049...
+[DigitizedRecTrk]:  Saving 102th graph
+Loading 60049 to 60632...
+[DigitizedRecTrk]:  Saving 103th graph
+Loading 60632 to 61215...
+[DigitizedRecTrk]:  Saving 104th graph
+Loading 61215 to 61798...
+[DigitizedRecTrk]:  Saving 105th graph
+Loading 61798 to 62381...
+[DigitizedRecTrk]:  Saving 106th graph
+Loading 62381 to 62964...
+[DigitizedRecTrk]:  Saving 107th graph
+Loading 62964 to 63547...
+[DigitizedRecTrk]:  Saving 108th graph
+Loading 63547 to 64130...
+[DigitizedRecTrk]:  Saving 109th graph
+Loading 64130 to 64713...
+[DigitizedRecTrk]:  Saving 110th graph
+Loading 64713 to 65296...
+[DigitizedRecTrk]:  Saving 111th graph
+Loading 65296 to 65879...
+[DigitizedRecTrk]:  Saving 112th graph
+Loading 65879 to 66462...
+[DigitizedRecTrk]:  Saving 113th graph
+Loading 66462 to 67045...
+[DigitizedRecTrk]:  Saving 114th graph
+Loading 67045 to 67628...
+[DigitizedRecTrk]:  Saving 115th graph
+Loading 67628 to 68211...
+[DigitizedRecTrk]:  Saving 116th graph
+Loading 68211 to 68794...
+[DigitizedRecTrk]:  Saving 117th graph
+Loading 68794 to 69377...
+[DigitizedRecTrk]:  Saving 118th graph
+Loading 69377 to 69960...
+[DigitizedRecTrk]:  Saving 119th graph
+Loading 69960 to 70543...
+[DigitizedRecTrk]:  Saving 120th graph
+Loading 70543 to 71126...
+[DigitizedRecTrk]:  Saving 121th graph
+Loading 71126 to 71709...
+[DigitizedRecTrk]:  Saving 122th graph
+Loading 71709 to 72292...
+[DigitizedRecTrk]:  Saving 123th graph
+Loading 72292 to 72875...
+[DigitizedRecTrk]:  Saving 124th graph
+Loading 72875 to 73458...
+[DigitizedRecTrk]:  Saving 125th graph
+Loading 73458 to 74041...
+[DigitizedRecTrk]:  Saving 126th graph
+Loading 74041 to 74624...
+[DigitizedRecTrk]:  Saving 127th graph
+Loading 74624 to 75207...
+[DigitizedRecTrk]:  Saving 128th graph
+Loading 75207 to 75790...
+[DigitizedRecTrk]:  Saving 129th graph
+Loading 75790 to 76373...
+[DigitizedRecTrk]:  Saving 130th graph
+Loading 76373 to 76956...
+[DigitizedRecTrk]:  Saving 131th graph
+Loading 76956 to 77539...
+[DigitizedRecTrk]:  Saving 132th graph
+Loading 77539 to 77881...
+[DigitizedRecTrk]:  Saving 133th graph
+[DigitizedTagTrk]:  Output to output/DigitizedTagTrk
+Loading 0 to 77881...
+[DigitizedTagTrk]:  Saving 0th graph
+Overriding batch_size to 64
+2025-05-27 09:54:47,563 - [Main Process: INFO] ==> Running basic DDP on rank 0 with total size 1.
+2025-05-27 09:54:47,563 - [GPU Setup: INFO] CUDA is available.
+2025-05-27 09:54:47,612 - [GPU Setup: INFO] Number of available GPUs: 1
+2025-05-27 09:54:47,620 - [GPU Setup: INFO] GPU 0: Tesla V100-PCIE-32GB
+2025-05-27 09:54:47,638 - [torch.distributed.distributed_c10d: INFO] Added key: store_based_barrier_key:1 to store for rank: 0
+2025-05-27 09:54:47,638 - [torch.distributed.distributed_c10d: INFO] Rank 0: Completed store-based barrier for key:store_based_barrier_key:1 with 1 nodes.
+Wandb is disabled, not logging.
+2025-05-27 09:54:47,639 - [Main Process: INFO] ==> No existing model output directory found, start from scratch.
+======================================================================
+Layer (type:depth-idx)                        Param #
+======================================================================
+TrkTrans                                      --
+├─LinkNet: 1-1                                --
+│    └─Sequential: 2-1                        --
+│    │    └─Linear: 3-1                       448
+│    │    └─ReLU: 3-2                         --
+│    │    └─Linear: 3-3                       4,160
+│    │    └─ReLU: 3-4                         --
+│    └─Sequential: 2-2                        --
+│    │    └─Linear: 3-5                       256
+│    │    └─ReLU: 3-6                         --
+│    │    └─Linear: 3-7                       4,160
+│    │    └─ReLU: 3-8                         --
+│    └─ModuleList: 2-3                        --
+│    │    └─TransformerConv: 3-9              132,096
+│    │    └─TransformerConv: 3-10             132,096
+│    │    └─TransformerConv: 3-11             132,096
+│    │    └─TransformerConv: 3-12             132,096
+│    │    └─TransformerConv: 3-13             132,096
+│    └─ModuleList: 2-4                        --
+│    │    └─LayerNorm: 3-14                   512
+│    │    └─LayerNorm: 3-15                   512
+│    │    └─LayerNorm: 3-16                   512
+│    │    └─LayerNorm: 3-17                   512
+│    │    └─LayerNorm: 3-18                   512
+│    └─ModuleList: 2-5                        --
+│    │    └─LayerNorm: 3-19                   256
+│    │    └─LayerNorm: 3-20                   256
+│    │    └─LayerNorm: 3-21                   256
+│    │    └─LayerNorm: 3-22                   256
+│    │    └─LayerNorm: 3-23                   256
+│    └─ModuleList: 2-6                        --
+│    │    └─Linear: 3-24                      16,448
+│    │    └─Linear: 3-25                      16,448
+│    │    └─Linear: 3-26                      16,448
+│    │    └─Linear: 3-27                      16,448
+│    │    └─Linear: 3-28                      16,448
+│    └─ModuleList: 2-7                        --
+│    │    └─Linear: 3-29                      16,448
+│    │    └─Linear: 3-30                      16,448
+│    │    └─Linear: 3-31                      16,448
+│    │    └─Linear: 3-32                      16,448
+│    │    └─Linear: 3-33                      16,448
+│    └─Sequential: 2-8                        --
+│    │    └─Linear: 3-34                      8,256
+│    │    └─ReLU: 3-35                        --
+│    │    └─Linear: 3-36                      65
+======================================================================
+Total params: 846,145
+Trainable params: 846,145
 Non-trainable params: 0
-=================================================================
-2025-04-27 00:12:15,311 - [Apply.Momentum: INFO] Processing 1/1: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/
-2025-04-27 00:12:15,313 - [utility.DataLoader: INFO] Reading from graph files
-2025-04-27 00:12:17,500 - [Apply.Momentum: INFO] Processing 1th iteration with 21 batches.
-2025-04-27 00:13:29,583 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 1th iteration.
-2025-04-27 00:13:31,152 - [Apply.Momentum: INFO] Processing 2th iteration with 21 batches.
-2025-04-27 00:14:28,826 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 2th iteration.
-2025-04-27 00:14:30,197 - [Apply.Momentum: INFO] Processing 3th iteration with 21 batches.
-2025-04-27 00:15:23,035 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 3th iteration.
-2025-04-27 00:15:24,618 - [Apply.Momentum: INFO] Processing 4th iteration with 21 batches.
-2025-04-27 00:16:17,511 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 4th iteration.
-2025-04-27 00:16:19,081 - [Apply.Momentum: INFO] Processing 5th iteration with 21 batches.
-2025-04-27 00:17:28,300 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 5th iteration.
-2025-04-27 00:17:29,724 - [Apply.Momentum: INFO] Processing 6th iteration with 21 batches.
-2025-04-27 00:18:15,446 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 6th iteration.
-2025-04-27 00:18:15,969 - [Apply.Momentum: INFO] Processing 7th iteration with 10 batches.
-2025-04-27 00:18:42,865 - [Apply.Momentum: INFO] Number of graphs: 583 processed in 7th iteration.
-2025-04-27 00:18:43,668 - [Apply.Momentum: INFO] Processing 8th iteration with 10 batches.
-2025-04-27 00:19:23,360 - [Apply.Momentum: INFO] Number of graphs: 583 processed in 8th iteration.
-2025-04-27 00:19:24,924 - [Apply.Momentum: INFO] Processing 9th iteration with 21 batches.
-2025-04-27 00:20:29,519 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 9th iteration.
-2025-04-27 00:20:31,063 - [Apply.Momentum: INFO] Processing 10th iteration with 21 batches.
-2025-04-27 00:21:32,961 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 10th iteration.
-2025-04-27 00:21:34,043 - [Apply.Momentum: INFO] Processing 11th iteration with 21 batches.
-2025-04-27 00:22:10,595 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 11th iteration.
-2025-04-27 00:22:12,530 - [Apply.Momentum: INFO] Processing 12th iteration with 21 batches.
-2025-04-27 00:23:26,580 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 12th iteration.
-2025-04-27 00:23:28,030 - [Apply.Momentum: INFO] Processing 13th iteration with 21 batches.
-2025-04-27 00:24:08,522 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 13th iteration.
-2025-04-27 00:24:09,919 - [Apply.Momentum: INFO] Processing 14th iteration with 21 batches.
-2025-04-27 00:24:51,973 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 14th iteration.
-2025-04-27 00:24:53,737 - [Apply.Momentum: INFO] Processing 15th iteration with 21 batches.
-2025-04-27 00:25:58,136 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 15th iteration.
-2025-04-27 00:25:59,656 - [Apply.Momentum: INFO] Processing 16th iteration with 21 batches.
-2025-04-27 00:27:05,611 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 16th iteration.
-2025-04-27 00:27:07,079 - [Apply.Momentum: INFO] Processing 17th iteration with 21 batches.
-2025-04-27 00:27:55,754 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 17th iteration.
-2025-04-27 00:27:57,513 - [Apply.Momentum: INFO] Processing 18th iteration with 21 batches.
-2025-04-27 00:28:52,808 - [Apply.Momentum: INFO] Number of graphs: 1331 processed in 18th iteration.
-2025-04-27 00:28:54,472 - [Apply.Momentum: INFO] Processing 19th iteration with 21 batches.
-2025-04-27 00:29:51,241 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 19th iteration.
-2025-04-27 00:29:52,600 - [Apply.Momentum: INFO] Processing 20th iteration with 21 batches.
-2025-04-27 00:31:03,327 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 20th iteration.
-2025-04-27 00:31:05,265 - [Apply.Momentum: INFO] Processing 21th iteration with 21 batches.
-2025-04-27 00:31:54,425 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 21th iteration.
-2025-04-27 00:31:56,428 - [Apply.Momentum: INFO] Processing 22th iteration with 21 batches.
-2025-04-27 00:32:52,096 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 22th iteration.
-2025-04-27 00:32:53,785 - [Apply.Momentum: INFO] Processing 23th iteration with 21 batches.
-2025-04-27 00:33:31,680 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 23th iteration.
-2025-04-27 00:33:33,024 - [Apply.Momentum: INFO] Processing 24th iteration with 21 batches.
-2025-04-27 00:34:15,838 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 24th iteration.
-2025-04-27 00:34:17,140 - [Apply.Momentum: INFO] Processing 25th iteration with 21 batches.
-2025-04-27 00:35:13,170 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 25th iteration.
-2025-04-27 00:35:14,850 - [Apply.Momentum: INFO] Processing 26th iteration with 21 batches.
-2025-04-27 00:36:31,422 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 26th iteration.
-2025-04-27 00:36:33,766 - [Apply.Momentum: INFO] Processing 27th iteration with 21 batches.
-2025-04-27 00:37:51,952 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 27th iteration.
-2025-04-27 00:37:52,642 - [Apply.Momentum: INFO] Processing 28th iteration with 9 batches.
-2025-04-27 00:38:15,959 - [Apply.Momentum: INFO] Number of graphs: 557 processed in 28th iteration.
-2025-04-27 00:38:16,944 - [Apply.Momentum: INFO] Processing 29th iteration with 21 batches.
-2025-04-27 00:39:01,233 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 29th iteration.
-2025-04-27 00:39:02,813 - [Apply.Momentum: INFO] Processing 30th iteration with 21 batches.
-2025-04-27 00:39:53,735 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 30th iteration.
-2025-04-27 00:39:55,018 - [Apply.Momentum: INFO] Processing 31th iteration with 21 batches.
-2025-04-27 00:40:30,048 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 31th iteration.
-2025-04-27 00:40:31,400 - [Apply.Momentum: INFO] Processing 32th iteration with 21 batches.
-2025-04-27 00:41:17,061 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 32th iteration.
-2025-04-27 00:41:18,940 - [Apply.Momentum: INFO] Processing 33th iteration with 21 batches.
-2025-04-27 00:42:12,606 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 33th iteration.
-2025-04-27 00:42:13,906 - [Apply.Momentum: INFO] Processing 34th iteration with 21 batches.
-2025-04-27 00:42:51,364 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 34th iteration.
-2025-04-27 00:42:52,572 - [Apply.Momentum: INFO] Processing 35th iteration with 21 batches.
-2025-04-27 00:43:34,586 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 35th iteration.
-2025-04-27 00:43:36,035 - [Apply.Momentum: INFO] Processing 36th iteration with 21 batches.
-2025-04-27 00:44:17,667 - [Apply.Momentum: INFO] Number of graphs: 1331 processed in 36th iteration.
-2025-04-27 00:44:19,362 - [Apply.Momentum: INFO] Processing 37th iteration with 21 batches.
-2025-04-27 00:45:15,213 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 37th iteration.
-2025-04-27 00:45:16,642 - [Apply.Momentum: INFO] Processing 38th iteration with 21 batches.
-2025-04-27 00:45:55,135 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 38th iteration.
-2025-04-27 00:45:56,800 - [Apply.Momentum: INFO] Processing 39th iteration with 21 batches.
-2025-04-27 00:46:47,561 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 39th iteration.
-2025-04-27 00:46:48,923 - [Apply.Momentum: INFO] Processing 40th iteration with 21 batches.
-2025-04-27 00:47:29,074 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 40th iteration.
-2025-04-27 00:47:30,520 - [Apply.Momentum: INFO] Processing 41th iteration with 21 batches.
-2025-04-27 00:48:06,738 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 41th iteration.
-2025-04-27 00:48:08,378 - [Apply.Momentum: INFO] Processing 42th iteration with 21 batches.
-2025-04-27 00:48:50,428 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 42th iteration.
-2025-04-27 00:48:51,992 - [Apply.Momentum: INFO] Processing 43th iteration with 21 batches.
-2025-04-27 00:49:35,644 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 43th iteration.
-2025-04-27 00:49:36,549 - [Apply.Momentum: INFO] Processing 44th iteration with 21 batches.
-2025-04-27 00:50:08,905 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 44th iteration.
-2025-04-27 00:50:10,734 - [Apply.Momentum: INFO] Processing 45th iteration with 21 batches.
-2025-04-27 00:51:14,242 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 45th iteration.
-2025-04-27 00:51:16,117 - [Apply.Momentum: INFO] Processing 46th iteration with 21 batches.
-2025-04-27 00:52:14,702 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 46th iteration.
-2025-04-27 00:52:16,289 - [Apply.Momentum: INFO] Processing 47th iteration with 21 batches.
-2025-04-27 00:53:02,651 - [Apply.Momentum: INFO] Number of graphs: 1332 processed in 47th iteration.
-2025-04-27 00:53:02,651 - [utility.DataLoader: INFO] All chunks are loaded
-Finish
-2025-04-27 00:53:02,651 - [Apply.Momentum: INFO] Finish predicting file: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/
-get_data_loaders took a total of 0.0000 seconds. [counts:    1]
-load_graph took a total of 0.0000 seconds. [counts:    1]
-GNNTrackData.__init__ took a total of 0.0016 seconds. [counts:   47]
-MomNet.forward took a total of 15.2627 seconds. [counts:  953]
-cluster.<locals>.classify_layers took a total of 3.2887 seconds. [counts: 60329]
-cluster.<locals>.bfs_for_multiple_starts_with_layers took a total of 289.3010 seconds. [counts: 60329]
-cluster took a total of 967.3438 seconds. [counts: 60329]
-analyze_tracks took a total of 1232.2578 seconds. [counts: 60329]
-predict took a total of 2466.0038 seconds. [counts:    1]
-Loaded .lt data type: <class 'list'>
-Loaded .lt file 1332 events.
-Loaded .pt file: 1332 events.
-Average Efficiency over 1332 events: edge: 49.44%
-Average Efficiency over 1330 events: fitting track: 32.30%
-Average Efficiency over 1298 events: finding track: 74.84%
+======================================================================
+2025-05-27 09:55:04,880 - [Trainer: INFO] Epoch 0 Started
+2025-05-27 09:55:04,880 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 09:55:04,883 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 10:09:22,713 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 10:09:54,771 - [Trainer: INFO] Epoch 0 finished
+2025-05-27 10:09:54,774 - [Trainer: INFO] Epoch 0 trained 107498 samples and validated 46326 samples
+2025-05-27 10:09:54,774 - [Trainer: INFO] Epoch 1 Started
+2025-05-27 10:09:54,775 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 10:09:54,778 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 10:23:51,639 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 10:24:32,112 - [Trainer: INFO] Epoch 1 finished
+2025-05-27 10:24:32,115 - [Trainer: INFO] Epoch 1 trained 107498 samples and validated 46326 samples
+2025-05-27 10:24:32,115 - [Trainer: INFO] Epoch 2 Started
+2025-05-27 10:24:32,116 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 10:24:32,117 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 10:38:10,005 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 10:38:39,032 - [Trainer: INFO] Epoch 2 finished
+2025-05-27 10:38:39,034 - [Trainer: INFO] Epoch 2 trained 107498 samples and validated 46326 samples
+2025-05-27 10:38:39,034 - [Trainer: INFO] Epoch 3 Started
+2025-05-27 10:38:39,035 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 10:38:39,036 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 10:51:53,305 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 10:52:22,299 - [Trainer: INFO] Epoch 3 finished
+2025-05-27 10:52:22,301 - [Trainer: INFO] Epoch 3 trained 107498 samples and validated 46326 samples
+2025-05-27 10:52:22,301 - [Trainer: INFO] Epoch 4 Started
+2025-05-27 10:52:22,302 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 10:52:22,303 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 11:05:40,918 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 11:06:09,969 - [Trainer: INFO] Epoch 4 finished
+2025-05-27 11:06:09,972 - [Trainer: INFO] Epoch 4 trained 107498 samples and validated 46326 samples
+2025-05-27 11:06:09,972 - [Trainer: INFO] Epoch 5 Started
+2025-05-27 11:06:09,972 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 11:06:09,974 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 11:19:40,504 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 11:20:09,486 - [Trainer: INFO] Epoch 5 finished
+2025-05-27 11:20:09,489 - [Trainer: INFO] Epoch 5 trained 107498 samples and validated 46326 samples
+2025-05-27 11:20:09,489 - [Trainer: INFO] Epoch 6 Started
+2025-05-27 11:20:09,489 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 11:20:09,491 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 11:33:55,295 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 11:34:24,307 - [Trainer: INFO] Epoch 6 finished
+2025-05-27 11:34:24,309 - [Trainer: INFO] Epoch 6 trained 107498 samples and validated 46326 samples
+2025-05-27 11:34:24,309 - [Trainer: INFO] Epoch 7 Started
+2025-05-27 11:34:24,309 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 11:34:24,312 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 11:47:56,479 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 11:48:25,489 - [Trainer: INFO] Epoch 7 finished
+2025-05-27 11:48:25,491 - [Trainer: INFO] Epoch 7 trained 107498 samples and validated 46326 samples
+2025-05-27 11:48:25,491 - [Trainer: INFO] Epoch 8 Started
+2025-05-27 11:48:25,492 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 11:48:25,493 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 12:02:02,846 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 12:02:31,735 - [Trainer: INFO] Epoch 8 finished
+2025-05-27 12:02:31,738 - [Trainer: INFO] Epoch 8 trained 107498 samples and validated 46326 samples
+2025-05-27 12:02:31,738 - [Trainer: INFO] Epoch 9 Started
+2025-05-27 12:02:31,738 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 12:02:31,740 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 12:16:10,723 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 12:16:39,862 - [Trainer: INFO] Epoch 9 finished
+2025-05-27 12:16:39,864 - [Trainer: INFO] Epoch 9 trained 107498 samples and validated 46326 samples
+2025-05-27 12:16:39,864 - [Trainer: INFO] Epoch 10 Started
+2025-05-27 12:16:39,865 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 12:16:39,866 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 12:30:29,855 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 12:30:58,901 - [Trainer: INFO] Epoch 10 finished
+2025-05-27 12:30:58,903 - [Trainer: INFO] Epoch 10 trained 107498 samples and validated 46326 samples
+2025-05-27 12:30:58,903 - [Trainer: INFO] Epoch 11 Started
+2025-05-27 12:30:58,904 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 12:30:58,906 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 12:44:51,302 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 12:45:20,331 - [Trainer: INFO] Epoch 11 finished
+2025-05-27 12:45:20,334 - [Trainer: INFO] Epoch 11 trained 107498 samples and validated 46326 samples
+2025-05-27 12:45:20,334 - [Trainer: INFO] Epoch 12 Started
+2025-05-27 12:45:20,334 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 12:45:20,336 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 12:59:16,265 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 12:59:45,212 - [Trainer: INFO] Epoch 12 finished
+2025-05-27 12:59:45,214 - [Trainer: INFO] Epoch 12 trained 107498 samples and validated 46326 samples
+2025-05-27 12:59:45,214 - [Trainer: INFO] Epoch 13 Started
+2025-05-27 12:59:45,215 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 12:59:45,216 - [utility.DataLoader: INFO] Found 396 graph files
+2025-05-27 13:13:42,069 - [utility.DataLoader: INFO] All chunks are loaded
+2025-05-27 13:14:11,084 - [Trainer: INFO] Epoch 13 finished
+2025-05-27 13:14:11,108 - [Trainer: INFO] Epoch 13 trained 107498 samples and validated 46326 samples
+2025-05-27 13:14:11,109 - [Trainer: INFO] Epoch 14 Started
+2025-05-27 13:14:11,110 - [utility.DataLoader: INFO] Reading from graph files
+2025-05-27 13:14:11,112 - [utility.DataLoader: INFO] Found 396 graph files

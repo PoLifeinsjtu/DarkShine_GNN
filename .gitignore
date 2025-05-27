@@ -5,3 +5,8 @@
 /trkgnn/output.link.rec
 /trkgnn/output
 /trkgnn/output.momentum.rec
+/trkgnn/log
+/trkgnn/log/*.log
+/trkgnn/log/*.err
+/trkgnn/log/*.out
+/trkgnn/fig

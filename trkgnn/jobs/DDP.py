@@ -14,6 +14,8 @@ from utility.Trainer import Trainer
 from utility.EverythingNeeded import build_model, build_optimizer, build_loss, config_logging
 from utility.FunctionTime import timing_decorator, print_accumulated_times
 
+from losses.custom_losses import FocalLoss, combined_loss
+
 import torch.distributed as dist
 import torch.multiprocessing as mp
 
@@ -98,24 +100,27 @@ def process(rank, world_size, config_path, verbose, record, current_time):
 
     logger.info(f"==> Running basic DDP on rank {rank} with total size {world_size}.")
     setup(rank, world_size)
+    if os.getenv('WANDB_MODE') != 'disabled':
+        wandb.login(key="17722033571c81d4046c8e88049a5240ea32b54e")
 
-    wandb.login(key="17722033571c81d4046c8e88049a5240ea32b54e")
-
-    wandb.init(
-        project=f"TrkGNN_DDP_{cfg['task']}",
-        group=f"{pathlib.PurePath(cfg['output_dir']).name}@{current_time}",
-        name=f"DDP_{rank}",
-        job_type=f"{platform.node()}",
-        # resume="auto",
-        config=cfg,
-        mode="online" if record else "disabled",
-        dir=os.path.abspath(cfg['output_dir']),
-        notes=cfg['notes'],
-    )
-    # define a metric we are interested in the minimum of
-    wandb.define_metric("valid_loss", summary="min")
-    # define artifact
-    artifact = wandb.Artifact("best_model", type="model") if rank == 0 else None
+        wandb.init(
+            project=f"TrkGNN_DDP_{cfg['task']}",
+            group=f"{pathlib.PurePath(cfg['output_dir']).name}@{current_time}",
+            name=f"DDP_{rank}",
+            job_type=f"{platform.node()}",
+            # resume="auto",
+            config=cfg,
+            mode="online" if record else "disabled",
+            dir=os.path.abspath(cfg['output_dir']),
+            notes=cfg['notes'],
+        )
+        # define a metric we are interested in the minimum of
+        wandb.define_metric("valid_loss", summary="min")
+        # define artifact
+        artifact = wandb.Artifact("best_model", type="model") if rank == 0 else None
+    else:
+        artifact = None
+        print("Wandb is disabled, not logging.")
 
     # check if the model and summary log exists, if so, load it
     existed_model_path, summary_log = load_model_summary()

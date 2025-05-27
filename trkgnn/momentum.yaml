@@ -5,15 +5,15 @@ data:
   collection: DigitizedRecTrk
   first_threshold: 0.9
   global_stop: 1000000
-  global_stop_graph_file: 4
+  global_stop_graph_file: -1
   graph_with_BField: true
-  input_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Tracker_GNN/Tracker_GNN_100.root
+  input_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Tracker_GNN/Tracker_GNN_500.root
   input_graph_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/
   min_graph_size: 0.5
   n_workers: 0
   read_from_graph: true
   scale_factor_BField: 100.0
-  threshold: 0.5
+  threshold: 0.4
   tracking_boundary:
     z_max: -7.5
     z_min: -607.75

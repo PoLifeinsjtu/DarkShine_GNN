@@ -39,7 +39,7 @@ def setup():
 
 @timing_decorator
 @torch.no_grad()
-def predict(input_dir: list[str], model_dir: str, output_dir: str, truth: bool = False, vtx_model=None, shuffle: bool = True):
+def predict(input_dir: list[str], model_dir: str, output_dir: str, truth: bool = False, vtx_model=None):
     config_logging(True, output_dir=output_dir, prefix='apply')
     setup()
     logger = logging.getLogger("Apply.Link")
@@ -66,7 +66,7 @@ def predict(input_dir: list[str], model_dir: str, output_dir: str, truth: bool =
             batch_size=cfg['data']['batch_size'],
             distributed=False,
             n_workers=cfg['data']['n_workers'],
-            shuffle=shuffle,
+            shuffle=True,
             apply=True,
         )
 
@@ -76,26 +76,40 @@ def predict(input_dir: list[str], model_dir: str, output_dir: str, truth: bool =
         itr = 0
         while True:
             try:
+                logger.info(f"Processing chunk {itr}")
                 apply_loader = next(data_generator)
-                logger.info(f"Processing {itr + 1}th iteration with {len(apply_loader)} batches.")
-
+                logger.info(f"Chunk {itr} has {len(apply_loader)} batches")
                 predicted_graph_list = []
-                # Loop over batches
+
                 for j, batch in enumerate(apply_loader):
                     batch = batch.to(cfg['device'])
                     batch_out = model(batch)
                     y_pred = torch.sigmoid(batch_out)
-                    batch.edge_attr = torch.cat(
-                        [batch.edge_attr, y_pred.unsqueeze(-1)], dim=1) if not truth else torch.cat(
-                        [batch.edge_attr, batch.y.unsqueeze(-1)], dim=1)
-                    batch = batch.to("cpu")
 
-                    predicted_graph_list += batch.to_data_list()
+                    if not truth:
+                        batch.edge_attr = torch.cat([batch.edge_attr, y_pred.unsqueeze(-1)], dim=1)
+                    else:
+                        batch.edge_attr = torch.cat([batch.edge_attr, batch.y.unsqueeze(-1)], dim=1)
+
+                    batch = batch.to("cpu")
+                    graphs = batch.to_data_list()
+                    predicted_graph_list += graphs
+
+                    del batch, batch_out, y_pred
+                    torch.cuda.empty_cache()
+                    import gc
+                    gc.collect()
 
                 torch.save(predicted_graph_list, os.path.join(output_graph_dir, f"graph_{itr}.pt"))
+                logger.info(f"Saved output file: graph_{itr}.pt")
                 itr += 1
+
             except StopIteration:
-                print("Finish")
-                # logout to root file
-                logger.info(f"Finish predicting file: {data_dir}")
+                logger.info(f"Finished processing {data_dir} with {itr} chunks")
                 break
+
+            except Exception as e:
+                logger.error(f"Error processing chunk {itr} (attempting again): {e}")
+                continue
+                
+            

@@ -10,7 +10,7 @@ data:
   #    -- One Graph file is a list of graphs to be one chunk
   #--------------------------------
   # Read from ROOT (disable if read from graph)
-  input_dir: "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Tracker_GNN/Tracker_GNN_100.root"
+  input_dir: "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Tracker_GNN/Tracker_GNN_500.root"
   tree_name: 'dp'
   global_stop: 8000
   chunk_size: "30 MB"
@@ -18,7 +18,7 @@ data:
   # Read from graph
   read_from_graph: ture
   input_graph_dir: "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/output/"
-  global_stop_graph_file: 8
+  global_stop_graph_file: -1
 
   # General Data Loader Settings
   collection: 'DigitizedRecTrk'
@@ -56,14 +56,14 @@ momentum_predict: false
 
 model:
   name: LinkNet
-  node_input_dim: 6 # (x,y,z, By)
+  node_input_dim: 6 # (x,y,z, B)
   edge_input_dim: 3 # (r, theta, phi)
   hidden_dim: 64
   heads: 4
-  n_iterations: 3
+  n_iterations: 5
   n_encoder_layers: 2
 
-loss_func: binary_cross_entropy_with_logits
+loss_func: focal_loss
 
 optimizer:
   name: Adam

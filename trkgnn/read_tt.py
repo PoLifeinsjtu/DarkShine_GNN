@@ -6,7 +6,9 @@ import networkx as nx
 from torch_geometric.utils import to_networkx
 from mpl_toolkits.mplot3d import Axes3D
 import os
-
+import glob
+import re
+import torch.multiprocessing as mp
 
 def extract_dtrack_data(data):
     """
@@ -731,23 +733,142 @@ def efficiency_calculation(file_path_recon, file_path_truth, range_threshold, nu
     print(f"Average Efficiency over {valid_events_fit_track} events: fitting track: {average_efficiency_fit_track:.2%}")
     print(f"Average Efficiency over {valid_events_just_track} events: finding track: {average_efficiency_find_track:.2%}")
 
+def efficiency_calculation_all(recon_template, truth_template, range_threshold, num_events, file_indices):
+    """
+    计算所有文件的平均效率。
+    :param recon_template: .lt 文件路径模板（包含 {} 用于替换文件索引）。
+    :param truth_template: .pt 文件路径模板（包含 {} 用于替换文件索引）。
+    :param range_threshold: 判断节点是否匹配的范围阈值。
+    :param num_events: 每个文件中要计算的事件数量。
+    :param file_indices: 要处理的文件索引列表（例如 [0, 1, 2, ...]）。
+    :return: 所有文件的平均效率（edge、fitting track、finding track）。
+    """
+    total_efficiency_edge = 0
+    total_efficiency_fit_track = 0
+    total_efficiency_find_track = 0
+    total_valid_events_edge = 0
+    total_valid_events_fit_track = 0
+    total_valid_events_find_track = 0
+    processed_files = 0
+
+    for file_idx in file_indices:
+        # 构造文件路径
+        file_path_recon = recon_template.format(file_idx)
+        file_path_truth = truth_template.format(file_idx)
+
+        # 检查文件是否存在
+        if not os.path.exists(file_path_recon) or not os.path.exists(file_path_truth):
+            print(f"Skipping file index {file_idx}: One or both files not found.")
+            continue
+
+        print(f"Processing file index {file_idx}")
+
+        # 重定向标准输出以捕获 efficiency_calculation 的打印信息
+        import sys
+        from io import StringIO
+        old_stdout = sys.stdout
+        sys.stdout = StringIO()
+
+        try:
+            # 调用现有的 efficiency_calculation 函数
+            efficiency_calculation(file_path_recon, file_path_truth, range_threshold, num_events)
+            
+            # 获取打印的输出
+            output = sys.stdout.getvalue()
+            print(output)  # 保留输出
+            sys.stdout = old_stdout
+
+            # 解析输出以提取效率值
+            lines = output.strip().split('\n')
+            for line in lines:
+                if 'Average Efficiency over' in line:
+                    if 'edge' in line:
+                        efficiency_edge = float(line.split(':')[-1].strip().strip('%')) / 100
+                        valid_events_edge = int(line.split('over')[-1].split('events')[0].strip())
+                    elif 'fitting track' in line:
+                        efficiency_fit_track = float(line.split(':')[-1].strip().strip('%')) / 100
+                        valid_events_fit_track = int(line.split('over')[-1].split('events')[0].strip())
+                    elif 'finding track' in line:
+                        efficiency_find_track = float(line.split(':')[-1].strip().strip('%')) / 100
+                        valid_events_find_track = int(line.split('over')[-1].split('events')[0].strip())
+
+            if efficiency_fit_track < 0.4:
+                print(f"Low fitting track efficiency ({efficiency_fit_track:.2%}) for file index {file_idx}")
+
+            # 累加效率和有效事件数
+            total_efficiency_edge += efficiency_edge * valid_events_edge
+            total_efficiency_fit_track += efficiency_fit_track * valid_events_fit_track
+            total_efficiency_find_track += efficiency_find_track * valid_events_find_track
+            total_valid_events_edge += valid_events_edge
+            total_valid_events_fit_track += valid_events_fit_track
+            total_valid_events_find_track += valid_events_find_track
+            processed_files += 1
+
+        except Exception as e:
+            sys.stdout = old_stdout
+            print(f"Error processing file index {file_idx}: {str(e)}")
+            continue
+
+    # 计算平均效率
+    average_efficiency_edge = total_efficiency_edge / total_valid_events_edge if total_valid_events_edge > 0 else 0
+    average_efficiency_fit_track = total_efficiency_fit_track / total_valid_events_fit_track if total_valid_events_fit_track > 0 else 0
+    average_efficiency_find_track = total_efficiency_find_track / total_valid_events_find_track if total_valid_events_find_track > 0 else 0
+
+    print(f"\nOverall Average Efficiency over {processed_files} files:")
+    print(f"Edge Efficiency: {average_efficiency_edge:.2%} (over {total_valid_events_edge} total valid events)")
+    print(f"Fitting Track Efficiency: {average_efficiency_fit_track:.2%} (over {total_valid_events_fit_track} total valid events)")
+    print(f"Finding Track Efficiency: {average_efficiency_find_track:.2%} (over {total_valid_events_find_track} total valid events)")
+
+    return average_efficiency_edge, average_efficiency_fit_track, average_efficiency_find_track
+
+def get_file_indices(recon_template, truth_template):
+    """
+    动态获取所有 .lt 文件的索引，并确保对应的 .pt 文件存在。
+    :param recon_template: .lt 文件路径模板（包含 {} 用于替换文件索引）。
+    :param truth_template: .pt 文件路径模板（包含 {} 用于替换文件索引）。
+    :return: 可用的文件索引列表。
+    """
+    # 获取所有 .lt 文件
+    recon_files = glob.glob(recon_template.format('*'))
+    file_indices = []
+
+    # 从文件名中提取索引
+    for recon_file in recon_files:
+        # 使用正则表达式提取文件名中的数字（例如 tracks_0.lt -> 0）
+        match = re.search(r'tracks_(\d+)\.lt', recon_file)
+        if match:
+            idx = int(match.group(1))
+            # 检查对应的 .pt 文件是否存在
+            truth_file = truth_template.format(idx)
+            if os.path.exists(truth_file):
+                file_indices.append(idx)
+            else:
+                print(f"Warning: No matching .pt file found for {recon_file} (index {idx})")
+        else:
+            print(f"Warning: Could not extract index from {recon_file}")
+
+    file_indices.sort() 
+    print(f"Found {len(file_indices)} valid file pairs")
+    return file_indices
 
 if __name__ == '__main__':
     file_path_recon = '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.momentum.rec.0p999/DigitizedRecTrk/tracks_0.lt'  
-    file_path_raw = '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.momentum.rec.0p999/DigitizedRecTrk/momentum_0.pt'
-    file_path_truth = '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/DigitizedRecTrk/graph_1.pt'
-    file_path_template = '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/DigitizedRecTrk/graph_{}.pt'
-    # for i in range(46):
-    #     file_path_truth = file_path_template.format(i)
-    #     if os.path.exists(file_path_truth):
-    #         print(f"graph_id: {i}")
-    #         efficiency_calculation(file_path_recon, file_path_truth, range_threshold=0.001, num_events=25)
-    #     else:
-    #         print(f"File {file_path_truth} does not exist.")
-    # load_and_plot_recon_tracks_by_event(file_path_recon, file_path_truth, raw_hits=True, num_events=15)
-    # load_and_plot_yz(file_path_recon, file_path_truth, raw_hits=True, num_events=15)
-    # threeD_plot(file_path_recon, file_path_truth, raw_hits=True, num_events=15)
-    efficiency_calculation(file_path_recon, file_path_truth, range_threshold=0.001, num_events=100)
+    # file_path_raw = '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.momentum.rec.0p999/DigitizedRecTrk/momentum_0.pt'
+    # file_path_truth = '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/DigitizedRecTrk/graph_0.pt'
+    file_path_truth_template = '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/DigitizedRecTrk/graph_{}.pt'
+    file_path_recon_template = '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.momentum.rec.0p999/DigitizedRecTrk/tracks_{}.lt'
+    # file_indices = list(range(10))
+    file_indices = get_file_indices(file_path_recon_template, file_path_truth_template)
+    range_threshold=0.001
+    num_events=2000
+
+    efficiency_calculation_all(
+        recon_template=file_path_recon_template,
+        truth_template=file_path_truth_template,
+        range_threshold=range_threshold,
+        num_events=num_events,
+        file_indices=file_indices
+    )
     # inspect_file_structure(file_path_recon)
     # inspect_file_structure(file_path_truth)
     # print_position(file_path_recon, file_path_truth, raw_hits=True, num_events=5)

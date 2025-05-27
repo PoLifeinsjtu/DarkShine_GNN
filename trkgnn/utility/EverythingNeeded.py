@@ -18,7 +18,7 @@ from sklearn.cluster import DBSCAN
 import models
 from utility.Control import cfg
 from utility.FunctionTime import timing_decorator
-
+from losses.custom_losses import FocalLoss, combined_loss
 
 def build_model(rank, distributed=False, existed_model_path: str = None):
     logger = logging.getLogger(__name__)
@@ -94,7 +94,12 @@ def build_optimizer(parameters, n_rank, name='Adam', learning_rate=0.001,
 
 
 def build_loss(name):
-    loss_func = getattr(nn.functional, name)
+    if (name == 'focal_loss'):
+        loss_func = FocalLoss()
+    elif (name == 'combined_loss'):
+        loss_func = combined_loss
+    else:
+        loss_func = getattr(nn.functional, name)
     return loss_func
 
 

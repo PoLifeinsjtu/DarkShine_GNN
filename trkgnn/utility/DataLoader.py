@@ -2,6 +2,7 @@
 import glob
 import os
 import logging
+import re
 
 # External imports
 import numpy as np
@@ -25,7 +26,7 @@ from utility.EverythingNeeded import get_memory_size_MB
 @timing_decorator
 def get_data_loaders(
         input_dir, chunk_size, batch_size,
-        distributed=False, n_workers=0, rank=None, n_ranks=None, shuffle=False, apply=False
+        distributed=False, n_workers=0, rank=None, n_ranks=None, shuffle=True, apply=False
 ):
     logger = logging.getLogger(__name__)
 
@@ -158,7 +159,7 @@ def get_data_loaders(
             # print(f"[ {rank} ] Number of samples assigned to GPU {rank}: {len(sample_indices)}")
             # print(f"[ {rank} ] Assigned sample indices for GPU {rank}: {sample_indices}")
 
-            yield train_data_loader, valid_data_loader, None,  # large_data_loader
+            yield train_data_loader, valid_data_loader, None  # large_data_loader
 
 
 @timing_decorator
@@ -226,17 +227,25 @@ def load_ntuples(file_path, tree_name, branch_name, col, chunk_size="100 MB", ap
 @timing_decorator
 def load_graph(graph_file_list):
     logger = logging.getLogger(__name__)
-
     # check if endswith .pt
     if graph_file_list.endswith('.pt'):
         # Load the file and yield it
         tensor = torch.load(graph_file_list)
-
         yield tensor
     else:
         # check if the directory exists
         if os.path.isdir(graph_file_list):
             files = glob.glob(os.path.join(graph_file_list, '*.pt'))
+            logger.info(f"Found {len(files)} graph files")
+            # Check if the pattern matches the files
+            pattern = re.compile(r'graph_(\d+).pt')
+            matched_files = [f for f in files if pattern.match(os.path.basename(f))]
+            
+            if len(matched_files) > 0:
+                files.sort(key=lambda x: int(pattern.search(os.path.basename(x)).group(1)))
+            else:
+                # No need to sort
+                pass
         else:
             logger.warning(f"The directory {graph_file_list} does not exist.")
             raise FileNotFoundError

@@ -10,6 +10,13 @@ from utility.Control import cfg
 
 
 def main(arg):
+    load_config(args.config)
+    
+    # Override batch size if provided
+    if hasattr(args, 'batch_size') and args.batch_size is not None:
+        cfg['data']['batch_size'] = args.batch_size
+        print(f"Overriding batch_size to {args.batch_size}")
+    
     if arg.command == 'test':
         load_config(arg.config)
         quick_test()
@@ -18,7 +25,6 @@ def main(arg):
         parallel_process(arg.config, args.world_size, args.verbose, record=args.record)
 
     if arg.command == 'apply':
-        shuffle = False
         predict = None
         vtx_model = None
         if arg.process == 'link':
@@ -33,7 +39,7 @@ def main(arg):
         if cfg['to_disk']:
             apply_to_ds(args.input, args.model, args.output, save=True)
         else:
-            predict(args.input, args.model, args.output, args.truth, vtx_model, shuffle=shuffle)
+            predict(args.input, args.model, args.output, args.truth, vtx_model)
         print_accumulated_times()
 
     if arg.command == 'dummy':
@@ -54,6 +60,7 @@ if __name__ == '__main__':
     # parser for quick-test
     test = subparsers.add_parser('test', help='quick test using small dataset')
     test.add_argument('config', default='config.yaml', type=str, help="the config file")
+    test.add_argument('--batch_size', type=int, help="Override batch_size in config")
 
     # parser for quick-test
     DDP = subparsers.add_parser('DDP', help='Distributed Data Parallel Training')
@@ -61,6 +68,7 @@ if __name__ == '__main__':
     DDP.add_argument('-w', '--world_size', type=int, default=1)
     DDP.add_argument('-v', '--verbose', action='store_true')
     DDP.add_argument('-r', '--record', action='store_true', help="record details using wandb")
+    DDP.add_argument('--batch_size', type=int, help="Override batch_size in config")
 
     # parser for evaluation/application
     apply_new = subparsers.add_parser('apply', help='apply the link model to the dataset')
@@ -84,10 +92,12 @@ if __name__ == '__main__':
     apply_new.add_argument(
         '-x', '--vertex_config', default='model', type=str, help="the vertex model config (optional)"
     )
+    apply_new.add_argument('--batch_size', type=int, help="Override batch_size in config")
 
     # parser for dummy test
     dummy = subparsers.add_parser('dummy', help='dummy test the evaluation speed')
     dummy.add_argument('config', default='config.yaml', type=str, help="the config file")
+    dummy.add_argument('--batch_size', type=int, help="Override batch_size in config")
 
     args = par.parse_args()
 

@@ -158,9 +158,9 @@ class Trainer:
         #     self.write_checkpoint(checkpoint_id=epoch)
 
         if self.rank == 0:
-            if self.best_model_path is not None:
+            if self.best_model_path is not None and self.best_model_artifact is not None:
                 self.best_model_artifact.add_file(self.best_model_path)
-                wandb.log_artifact(self.best_model_artifact)
+                # wandb.log_artifact(self.best_model_artifact)
 
     @timing_decorator
     def process_epoch(self, epoch, world_size):
@@ -224,7 +224,7 @@ class Trainer:
         # Log epoch metrics
         epoch_results = epoch_metrics.to_dict()
 
-        wandb.log(epoch_results)
+        # wandb.log(epoch_results)
 
         if self.rank == 0:
             checkpoint_file = self.write_checkpoint(epoch)
@@ -232,6 +232,14 @@ class Trainer:
             if epoch_metrics.metrics['valid_loss'] < self.best_loss:
                 self.best_loss = epoch_metrics.metrics['valid_loss']
                 self.best_model_path = checkpoint_file
+
+                # Initialize Artifact
+                if self.best_model_artifact is None:
+                    self.best_model_artifact = wandb.Artifact(
+                        name="best_model",
+                        type="model",
+                        metadata={"best_epoch": epoch}
+                    )
 
         self.logger.info(f"Epoch {epoch} finished")
 
@@ -264,6 +272,11 @@ class Trainer:
                 batch_loss.backward()
             elif cfg['task'] == 'momentum':
                 p_pred_all, new_y_score = batch_out
+                # Debug prints
+                # self.logger.info(f'[Batch {i}] Momentum Prediction Sample: {p_pred_all[:5].detach().cpu().numpy()}')
+                # show_y_score = torch.sigmoid(new_y_score)
+                # self.logger.info(f'[Batch {i}] Edge Scores Sample: {show_y_score[:10].detach().cpu().numpy()}')
+
                 # calculate momentum prediction
                 # con_mask = (batch.y == 1)
                 # p_truth = batch.p[con_mask]
@@ -271,6 +284,7 @@ class Trainer:
                 p_truth = batch.p
                 p_pred = p_pred_all
                 batch_loss = self.loss_func_p(p_pred, p_truth, weight=batch.w)
+                # batch_loss = self.loss_func_p(p_pred, p_truth, weight=batch.w) + self.loss_func_y(new_y_score, batch.y, weight=batch.w)
                 # del con_mask
 
                 batch_loss.backward()
