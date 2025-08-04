@@ -19,3 +19,8 @@ new_data/output/DigitizedRecTrk/*.pt
 /trkgnn/run/single_200_repeat
 /new_data
 trkgnn/env/
+trkgnn/Train_root/
+trkgnn/Train_root_copy/
+trkgnn/apply_200.link.rec.0p999/
+trkgnn/output_single_200/
+trkgnn/run/
