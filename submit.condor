@@ -1,0 +1,12 @@
+Universe   = vanilla
+Executable = run_all.sh
+# Arguments  =
+Log        = log_all/track.log
+Output     = log_all/track.out
+Error      = log_all/track.err
+request_GPUs = 1
+request_CPUs = 1
+#rank = (OpSysName == "CentOS")
+#requirements = (machine == "bl-hd-1.phy.sjtulocal")
+
+Queue
