@@ -18,4 +18,4 @@ new_data/output/DigitizedRecTrk/*.pt
 /trkgnn/run/New_Net_all_for_each/apply.link.rec
 /trkgnn/run/single_200_repeat
 /new_data
-/trkgnn/env/
+trkgnn/env/
