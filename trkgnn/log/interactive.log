@@ -1024,3 +1024,70 @@
 	   Gpus                 :                 1         1 "CUDA2"
 	   Memory (MB)          :     2356        1       128 
 ...
+000 (34395718.000.000) 06/26 23:55:55 Job submitted from host: <10.10.35.100:9618?addrs=10.10.35.100-9618&noUDP&sock=4838_0b48_3>
+...
+001 (34395718.000.000) 06/26 23:56:13 Job executing on host: <10.10.35.62:9618?addrs=10.10.35.62-9618&noUDP&sock=2578_df3e_3>
+...
+006 (34395718.000.000) 06/26 23:56:22 Image size of job updated: 57532
+	3  -  MemoryUsage of job (MB)
+	2872  -  ResidentSetSize of job (KB)
+...
+006 (34395718.000.000) 06/27 00:01:22 Image size of job updated: 45398288
+	1240  -  MemoryUsage of job (MB)
+	1269460  -  ResidentSetSize of job (KB)
+...
+006 (34395718.000.000) 06/27 00:06:23 Image size of job updated: 47093020
+	1343  -  MemoryUsage of job (MB)
+	1374272  -  ResidentSetSize of job (KB)
+...
+006 (34395718.000.000) 06/27 00:11:24 Image size of job updated: 47093020
+	1893  -  MemoryUsage of job (MB)
+	1938140  -  ResidentSetSize of job (KB)
+...
+006 (34395718.000.000) 06/27 00:16:24 Image size of job updated: 47537044
+	2306  -  MemoryUsage of job (MB)
+	2360680  -  ResidentSetSize of job (KB)
+...
+005 (34395718.000.000) 06/27 00:33:46 Job terminated.
+	(1) Normal termination (return value 255)
+		Usr 0 00:14:18, Sys 0 00:01:32  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:14:18, Sys 0 00:01:32  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :     1000     1000    391543 
+	   Gpus                 :                 1         1 "CUDA1"
+	   Memory (MB)          :     2306        1       128 
+...
+000 (34678351.000.000) 07/22 00:09:47 Job submitted from host: <10.10.35.100:9618?addrs=10.10.35.100-9618&noUDP&sock=485675_3b54_3>
+...
+001 (34678351.000.000) 07/22 00:09:57 Job executing on host: <10.10.35.62:9618?addrs=10.10.35.62-9618&noUDP&sock=2531_a24a_3>
+...
+006 (34678351.000.000) 07/22 00:10:05 Image size of job updated: 57532
+	3  -  MemoryUsage of job (MB)
+	2872  -  ResidentSetSize of job (KB)
+...
+006 (34678351.000.000) 07/22 00:12:48 Image size of job updated: 2889584
+	3  -  MemoryUsage of job (MB)
+	2872  -  ResidentSetSize of job (KB)
+...
+004 (34678351.000.000) 07/22 00:12:48 Job was evicted.
+	(0) Job was not checkpointed.
+		Usr 0 00:00:07, Sys 0 00:00:02  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated Assigned
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :     1000     1000    391384 
+	   Gpus                 :                 1         1 "CUDA3"
+	   Memory (MB)          :        3        1       128 
+...
+009 (34678351.000.000) 07/22 00:12:48 Job was aborted by the user.
+	via condor_rm (by user wanghuayang)
+...

@@ -14,3 +14,7 @@ new_data/apply.link.rec/apply_0.log
 new_data/apply.link.rec/DigitizedRecTrk/*.pt
 new_data/output/DigitizedRecTrk/*.pt
 /log_all
+/trkgnn/run/New_Net_all_for_each/500/output_test/DigitizedRecTrk
+/trkgnn/run/New_Net_all_for_each/apply.link.rec
+/trkgnn/run/single_200_repeat
+/new_data

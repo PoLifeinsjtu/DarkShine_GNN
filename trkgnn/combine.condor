@@ -1,0 +1,6 @@
+universe = vanilla
+executable = combine.sh
+output = log/combine.out
+error = log/combine.err
+log = log/combine.log
+queue

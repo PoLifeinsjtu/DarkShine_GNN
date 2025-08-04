@@ -99,7 +99,7 @@ def get_data_loaders(
             # disable large graphs for now
             large_graphs = None
 
-            train_data, test_data = train_test_split(chunk_data, test_size=0.3, random_state=cfg['rndm'])
+            train_data, test_data = train_test_split(chunk_data, test_size=0.25, random_state=cfg['rndm'])
             train_dataset = GNNTrackData(train_data)
             valid_dataset = GNNTrackData(test_data)
             # large_dataset = GNNTrackData(large_graphs)

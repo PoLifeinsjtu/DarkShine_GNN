@@ -24,6 +24,16 @@ def main(arg):
     if arg.command == 'DDP':
         parallel_process(arg.config, args.world_size, args.verbose, record=args.record)
 
+    # if arg.command == 'DDP':
+    #     parallel_process(
+    #         arg.config, 
+    #         args.world_size, 
+    #         args.verbose, 
+    #         record=args.record,
+    #         master_addr=args.master_addr,  
+    #         master_port=args.master_port   
+    #     )
+
     if arg.command == 'apply':
         predict = None
         vtx_model = None
@@ -69,6 +79,8 @@ if __name__ == '__main__':
     DDP.add_argument('-v', '--verbose', action='store_true')
     DDP.add_argument('-r', '--record', action='store_true', help="record details using wandb")
     DDP.add_argument('--batch_size', type=int, help="Override batch_size in config")
+    # DDP.add_argument('--master_addr', default='localhost', type=str, help='MASTER_ADDR for DDP (default: localhost)')
+    # DDP.add_argument('--master_port', default=12355, type=int, help='MASTER_PORT for DDP (default: 12355)')
 
     # parser for evaluation/application
     apply_new = subparsers.add_parser('apply', help='apply the link model to the dataset')

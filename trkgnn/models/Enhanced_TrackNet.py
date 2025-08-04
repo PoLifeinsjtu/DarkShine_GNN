@@ -75,6 +75,15 @@ class Enhanced_TrackNet(nn.Module):
         self.z_embedding = nn.Embedding(len(self.z_values), hidden_dim)
         self.cbam_node = CBAM(hidden_dim)
         self.cbam_edge = CBAM(hidden_dim)
+        # Version 2
+        self.edge_attention_layers = nn.ModuleList([
+            nn.Sequential(
+                nn.Linear(hidden_dim, hidden_dim // 2),  # 压缩维度
+                nn.ReLU(),
+                nn.Linear(hidden_dim // 2, 1)  # 输出每条边的权重分数
+            ) for _ in range(n_iterations)  # 每轮迭代用独立的注意力层
+        ])
+
         self.transformer_conv_list = nn.ModuleList([
             TransformerConv(2 * hidden_dim, hidden_dim, heads=heads)
             for _ in range(n_iterations)
@@ -88,7 +97,7 @@ class Enhanced_TrackNet(nn.Module):
             for _ in range(n_iterations)
         ])
         self.projection_layer_edge_list = nn.ModuleList([
-            nn.Linear(heads * hidden_dim, hidden_dim)
+            nn.Linear(2 * heads * hidden_dim, hidden_dim)
             for _ in range(n_iterations)
         ])
         self.projection_layer_node_list = nn.ModuleList([
@@ -125,16 +134,27 @@ class Enhanced_TrackNet(nn.Module):
         for i in range(self.n_iterations):
             x0 = node_features
             e0 = edge_features
+            # Version 2: 使用注意力机制计算边的权重
+            edge_scores = self.edge_attention_layers[i](edge_features)  # [E, 1]，E为边数
+            edge_attention = F.softmax(edge_scores, dim=0)  # 归一化权重，总和为1
+            # 加权聚合：重要的边（如正例边）贡献更大
+            weighted_edge_features = edge_features * edge_attention  # [E, hidden_dim]
             aggregated_from_src = scatter_add(
-                edge_features, edge_indices[1],
+                weighted_edge_features, 
+                edge_indices[1], 
                 dim=0, dim_size=node_features.shape[0]
             )
-            combined_features = torch.cat([node_features, aggregated_from_src - node_features], dim=1)
+            combined_features = torch.cat([node_features, aggregated_from_src], dim=1)  # [N, 2*hidden_dim]
+
             combined_features = self.norm_combined_list[i](combined_features)
             trans_out = self.transformer_conv_list[i](combined_features, edge_indices)
             trans_out = self.norm_transconv_list[i](trans_out)
             node_proj = self.projection_layer_node_list[i](trans_out)
-            edge_proj = self.projection_layer_edge_list[i](trans_out[edge_indices[0]])
+            # Version 2
+            src_node_feat = trans_out[edge_indices[0]]  # 源节点特征
+            dst_node_feat = trans_out[edge_indices[1]]  # 目标节点特征
+            edge_proj = self.projection_layer_edge_list[i](torch.cat([src_node_feat, dst_node_feat], dim=1))
+
             node_features = self.gfm_list[i](x0, node_proj)
             edge_features = self.gfm_list[i](e0, edge_proj)
         start_idx, end_idx = data.edge_index

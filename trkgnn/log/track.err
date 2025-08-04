@@ -1,0 +1,113 @@
+/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.sh: line 26: e_200: command not found
+Traceback (most recent call last):
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.py", line 115, in <module>
+    main(args)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.py", line 27, in main
+    parallel_process(
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/jobs/DDP.py", line 283, in parallel_process
+    mp.spawn(
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 239, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 197, in start_processes
+    while not context.join():
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 69, in _wrap
+    fn(i, *args)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/FunctionTime.py", line 12, in wrapper
+    result = func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/jobs/DDP.py", line 221, in process
+    trainer.process(
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/FunctionTime.py", line 12, in wrapper
+    result = func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/Trainer.py", line 149, in process
+    self.process_epoch(epoch, world_size)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/FunctionTime.py", line 12, in wrapper
+    result = func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/Trainer.py", line 190, in process_epoch
+    train_data, valid_data, large_data = next(data_generator)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/DataLoader.py", line 54, in get_data_loaders
+    chunk_data = next(chunk_generator)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/DataLoader.py", line 251, in load_graph
+    raise FileNotFoundError
+FileNotFoundError
+
+cp: cannot stat '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/output_200.link.rec/model.checkpoints/model_checkpoint_014.pth.tar': No such file or directory
+Traceback (most recent call last):
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.py", line 115, in <module>
+    main(args)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.py", line 51, in main
+    predict(args.input, args.model, args.output, args.truth, vtx_model)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/FunctionTime.py", line 12, in wrapper
+    result = func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/jobs/Apply_link.py", line 54, in predict
+    tar = torch.load(model_dir, map_location=cfg['device'])
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/serialization.py", line 791, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/serialization.py", line 271, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/serialization.py", line 252, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/output_200.link.rec/model.checkpoints/model_checkpoint_014.pth.tar'
+Traceback (most recent call last):
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.py", line 115, in <module>
+    main(args)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.py", line 27, in main
+    parallel_process(
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/jobs/DDP.py", line 283, in parallel_process
+    mp.spawn(
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 239, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method='spawn')
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 197, in start_processes
+    while not context.join():
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 160, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/multiprocessing/spawn.py", line 69, in _wrap
+    fn(i, *args)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/FunctionTime.py", line 12, in wrapper
+    result = func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/jobs/DDP.py", line 221, in process
+    trainer.process(
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/FunctionTime.py", line 12, in wrapper
+    result = func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/Trainer.py", line 149, in process
+    self.process_epoch(epoch, world_size)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/FunctionTime.py", line 12, in wrapper
+    result = func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/Trainer.py", line 190, in process_epoch
+    train_data, valid_data, large_data = next(data_generator)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/DataLoader.py", line 54, in get_data_loaders
+    chunk_data = next(chunk_generator)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/DataLoader.py", line 251, in load_graph
+    raise FileNotFoundError
+FileNotFoundError
+
+cp: cannot stat '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/output.momentum.rec/model.checkpoints/model_checkpoint_014.pth.tar': No such file or directory
+Traceback (most recent call last):
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.py", line 115, in <module>
+    main(args)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/run.py", line 51, in main
+    predict(args.input, args.model, args.output, args.truth, vtx_model)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/utility/FunctionTime.py", line 12, in wrapper
+    result = func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/jobs/Apply_momentum.py", line 66, in predict
+    tar = torch.load(model_dir, map_location=cfg['device'])
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/serialization.py", line 791, in load
+    with _open_file_like(f, 'rb') as opened_file:
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/serialization.py", line 271, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/env/lib/python3.9/site-packages/torch/serialization.py", line 252, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: '/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/output.momentum.rec/model.checkpoints/model_checkpoint_014.pth.tar'

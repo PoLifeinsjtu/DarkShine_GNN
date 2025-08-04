@@ -10,7 +10,7 @@ data:
   #    -- One Graph file is a list of graphs to be one chunk
   #--------------------------------
   # Read from ROOT (disable if read from graph)
-  input_dir: "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Tracker_GNN/Tracker_GNN_500.root"
+  input_dir: "/lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Train_root_zejia/Merged_Tracker_GNN.root"
   tree_name: 'dp'
   global_stop: 8000
   chunk_size: "30 MB"
@@ -55,13 +55,13 @@ to_disk: false
 momentum_predict: false
 
 model:
-  name: LinkNet
+  name: New_LinkNet
   node_input_dim: 6 # (x,y,z, B)
   edge_input_dim: 3 # (r, theta, phi)
   hidden_dim: 64
-  heads: 4
+  heads: 8
   n_iterations: 5
-  n_encoder_layers: 2
+  # n_encoder_layers: 2  # Not used in New_LinkNet
 
 loss_func: focal_loss
 

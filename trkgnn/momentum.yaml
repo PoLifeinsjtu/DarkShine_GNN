@@ -1,13 +1,13 @@
 data:
   E0: 8000
   batch_size: 64
-  chunk_size: 30 MB
+  chunk_size: 100 MB
   collection: DigitizedRecTrk
   first_threshold: 0.9
   global_stop: 1000000
   global_stop_graph_file: -1
   graph_with_BField: true
-  input_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Tracker_GNN/Tracker_GNN_500.root
+  input_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/Test_root/Merged_Tracker_GNN.root
   input_graph_dir: /lustre/collider/wanghuayang/DeepLearning/Tracking/trkgnn/apply.link.rec/
   min_graph_size: 0.5
   n_workers: 0
@@ -18,12 +18,12 @@ data:
     z_max: -7.5
     z_min: -607.75
   tracking_layers:
-  - 7.78
-  - 22.78
-  - 38.78
-  - 53.78
-  - 89.78
-  - 180.28
+  - 100.
+  - 200.
+  - 300.
+  - 500.
+  - 700.
+  - 900.
   tree_name: dp
 edge_features: true
 loss_func: binary_cross_entropy_with_logits
