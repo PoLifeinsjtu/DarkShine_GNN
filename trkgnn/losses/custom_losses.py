@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 class FocalLoss(nn.Module):
-    def __init__(self, alpha=1, gamma=2, reduction='mean'):
+    def __init__(self, alpha=0.786, gamma=2, reduction='mean'):
         super().__init__()
         self.alpha = alpha
         self.gamma = gamma
@@ -25,6 +25,32 @@ class FocalLoss(nn.Module):
             return loss.sum()
         else:
             return loss
+
+# class FocalLoss_new(nn.Module):
+#     def __init__(self, alpha=0.786, gamma=2, reduction='mean'):
+#         super().__init__()
+#         self.alpha = alpha
+#         self.gamma = gamma
+#         self.reduction = reduction
+
+#     def forward(self, inputs, targets, weight=None):
+#         bce = F.binary_cross_entropy_with_logits(inputs, targets, reduction='none')
+        
+#         # 如果 weight 提供，使用它来加权 BCE
+#         if weight is not None:
+#             bce = bce * weight
+
+#         pt = torch.exp(-bce)
+#         alpha_t = self.alpha * targets + (1 - self.alpha) * (1 - targets)
+#         focal_weight = alpha_t * (1 - pt) ** self.gamma
+#         loss = focal_weight * bce
+
+#         if self.reduction == 'mean':
+#             return loss.mean()
+#         elif self.reduction == 'sum':
+#             return loss.sum()
+#         else:
+#             return loss
 
 def dice_loss(pred, target):
     pred = torch.sigmoid(pred)
