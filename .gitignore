@@ -10,3 +10,7 @@
 /trkgnn/log/*.err
 /trkgnn/log/*.out
 /trkgnn/fig
+new_data/apply.link.rec/apply_0.log
+new_data/apply.link.rec/DigitizedRecTrk/*.pt
+new_data/output/DigitizedRecTrk/*.pt
+/log_all
