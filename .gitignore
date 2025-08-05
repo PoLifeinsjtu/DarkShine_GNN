@@ -14,9 +14,6 @@ new_data/apply.link.rec/apply_0.log
 new_data/apply.link.rec/DigitizedRecTrk/*.pt
 new_data/output/DigitizedRecTrk/*.pt
 /log_all
-/trkgnn/run/New_Net_all_for_each/500/output_test/DigitizedRecTrk
-/trkgnn/run/New_Net_all_for_each/apply.link.rec
-/trkgnn/run/single_200_repeat
 /new_data
 trkgnn/env/
 trkgnn/Train_root/
@@ -24,4 +21,8 @@ trkgnn/Train_root_copy/
 trkgnn/Train_root_zejia/
 trkgnn/apply_200.link.rec.0p999/
 trkgnn/output_single_200/
-trkgnn/run/
+trkgnn/run/New_Net_all_for_each
+trkgnn/run/New_Net_200
+trkgnn/run/single_200_repeat
+trkgnn/run/single_200_Not_over
+trkgnn/run/single_200_Over
